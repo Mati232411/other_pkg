@@ -1,0 +1,19 @@
+#!/bin/bash
+function relink {
+#mv /opt/other/bin/other /tmp/
+sudo rm /opt/other/bin/*
+find /opt/other/usr/ins -type d | grep bin >> /tmp/binaries_other
+for f in $(cat /tmp/binaries_other)
+do
+sudo ln -s $f/* /opt/other/bin/
+done
+sudo rm /tmp/binaries_other
+}
+case $1 in
+relink)
+relink
+;;
+*)
+echo "relink - but all the binaries from usr/ins into bin folder after new installation: it is done automatically after installing from the other package manager but needs to be done when software is installed manually"
+;;
+esac
