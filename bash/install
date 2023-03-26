@@ -1,0 +1,17 @@
+#!/bin/bash
+source /opt/other/usr/ins/other/etc/depend
+cd /opt/other/tmp/
+depend wget
+mkdir bash
+chown $USER bash
+cd bash
+wget 'http://ftp.gnu.org/gnu/bash/bash-5.2.tar.gz'
+tar xvf bash-5.2.tar.gz
+cd bash-5.2
+./configure --prefix=/opt/other/usr/ins/bash
+make -j4
+sudo make install
+cd ..
+cd ..
+sudo rm -rf bash
+other relink
