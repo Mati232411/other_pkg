@@ -1,0 +1,13 @@
+#!/bin/bash
+source /opt/other/usr/ins/other/etc/depend
+cd /opt/other/tmp/
+sudo mkdir nextcloud-desktop
+sudo chown $USER nextcloud-desktop
+cd nextcloud-desktop
+sudo mkdir '/opt/other/usr/ins/nextcloud-desktop'
+git clone https://github.com/nextcloud/desktop.git
+cd desktop
+depend cmake
+cmake -S . -B build -DCMAKE_INSTALL_PREFIX=/opt/other/usr/ins/nextcloud-desktop -DCMAKE_BUILD_TYPE=Debug
+sudo cmake --build build --target install
+other relink
